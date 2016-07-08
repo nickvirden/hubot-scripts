@@ -21,8 +21,6 @@ module.exports = function (robot) {
     
     robot.respond(/.*taco.*/, function(msg) {
         
-        var todaysDay = Date.now().getDate();
-        
         msg.send("Yes, there's a taco.", todaysDay);    
         
     });
