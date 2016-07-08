@@ -1,3 +1,7 @@
+# Personal Project Commentary
+
+I am experimenting with the Hubot framework for making a chat bot.
+
 # GAJS
 
 GAJS is a chat bot built on the [Hubot][hubot] framework. It was
