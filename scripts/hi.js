@@ -19,9 +19,9 @@ module.exports = function (robot) {
         
     });
     
-    robot.respond(/.*taco.*/, function(msg) {
+    robot.respond(/.*taco.*/i, function(msg) {
         
-        msg.send("Yes, there's a taco.", todaysDay);    
+        msg.send("Yes, there's a taco.");
         
     });
 }
