@@ -14,10 +14,10 @@ module.exports = (robot) ->
     robot.respond /.*teach.*me.*cook.*/i, (msg) ->
         
         # It'll get the first result
-        recipe msg, msg.match[1]?.trim()
+        recipe msg
 
-    recipe = (msg, subreddit) ->
-      url = if subreddit? then "http://www.reddit.com/r/recipes/hot.json" else "http://www.reddit.com/top.json"
+    recipe = (msg) ->
+      url = "http://www.reddit.com/r/GifRecipes/hot.json"
       msg
         .http(url)
           .get() (err, res, body) ->
