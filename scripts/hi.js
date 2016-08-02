@@ -40,7 +40,7 @@ module.exports = function (robot) {
                 console.log(res);
                 console.log(body);
                 
-                if (body.match(/^302/)[0] == '302' || body.match(/^302/)[0] === null) {
+                if (body.match(/^302/)[0] == '302' || body.match(/^302/) === null) {
                     msg.send("That author probably doesn't exist.");
                     return;
                 }
