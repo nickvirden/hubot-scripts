@@ -23,11 +23,7 @@ module.exports = function (robot) {
     // If you ask C3P0 to give you a random quote
     robot.respond(/.*give.*me.*a.*quote.*/i, function (msg) {
         
-        var getPost = function (posts) {
-            
-            var random = Math.round(Math.random() * posts.data.children.length);
-            posts.data.children[random].data;
-        };
+        retrieveQuote(msg);
         
         var retrieveQuote = function (msg) {
             
@@ -35,27 +31,13 @@ module.exports = function (robot) {
             var url = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=';
             
             msg.http(url).get()(function (err, res, body) {
-            
-                console.log(err);
-                console.log(res);
+                
                 console.log(body);
 
-                var posts = JSON.parse(body),
-                    post = getPost(posts);
-
-                if (post.error || null) {
-                    msg.send("That doesn't seem to be a valid author. [http response #{posts.error}]");
-                    return;
-                } else if (posts.data.children && posts.data.children.length > 0) {
-
-                    msg.send("While that author exists, there does not seem to be any quotes.");
-                    return;
-                }
+                var quote = JSON.parse(body);
                 
-                msg.send("#{post.title} - http://quotesondesign.com/wp-json/posts#{post.permalink}");
+                msg.send("#{quote.content} - #{quote.title} - #{quote.link}");
             });
         };
-        
-        retrieveQuote(msg);
     });
 };
