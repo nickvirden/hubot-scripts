@@ -38,7 +38,7 @@ module.exports = function (robot) {
                 
                 var parsedQuote = quote.shift();
                 
-                msg.send(parsedQuote.content + "-" + parsedQuote.title + "-" + parsedQuote.link);
+                msg.send(parsedQuote.content.replace(/<(?:.|\n)*?>/gm, '').trim() + " - " + parsedQuote.title + " - " + parsedQuote.link);
             });
         };
         
