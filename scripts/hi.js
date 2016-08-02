@@ -23,14 +23,14 @@ module.exports = function (robot) {
     });
     
     // If you ask C3P0 to give you a random quote
-    robot.respond(/.*give me a quote.*/i, function (msg) {
+    robot.respond(/.*give.*me.*a.*quote.*/i, function (msg) {
     
         retrieveQuote(msg);
         
         var retrieveQuote = function (msg) {
             
             // Hard code the URL
-            var url = 'http://quotes.rest/quote.json?author=thomas-paine';
+            var url = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=';
             
             msg.http(url).get()(function (err, res, body) {
             
