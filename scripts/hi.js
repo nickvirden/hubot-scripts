@@ -22,49 +22,38 @@ module.exports = function (robot) {
         
     });
     
-    // If you ask C3P0 to teach you how to cook
-    // robot.respond(/.*teach.*me.*cook.*/i, function (msg) {
-    /*
-        recipe(msg);
+    // If you ask C3P0 to give you a random quote
+    robot.respond(/.*give me a quote.*/i, function (msg) {
+    
+        retrieveQuote(msg);
         
-        var recipe = function (msg) {
+        var retrieveQuote = function (msg) {
             
             // Hard code the URL
-            var url = 'http://www.reddit.com/r/GifRecipes/hot.json';
+            var url = 'http://quotes.rest/quote.json?author=thomas-paine';
             
             msg.http(url).get()(function (err, res, body) {
             
                 if (body.match(/^302/)[0] == '302' || body.match(/^302/)[0] === null) {
-                    msg.send("That subreddit does not seem to exist.");
+                    msg.send("That author probably doesn't exist.");
                     return;
                 }
 
                 var posts = JSON.parse(body);
 
                 if (post.error || null) {
-                    msg.send("That doesn't seem to be a valid subreddit. [http response #{posts.error}]");
+                    msg.send("That doesn't seem to be a valid author. [http response #{posts.error}]");
                     return;
                 } else if (posts.data.children && posts.data.children.length > 0) {
 
-                    msg.send("While that subreddit exists, there does not seem to be anything there.");
+                    msg.send("While that author exists, there does not seem to be any quotes.");
                     return;
                 }
 
                 var post = getPost(posts),
                     tries_to_find_picture = 0;
-
-                while ((post.domain != "i.imgur.com") && (tries_to_find_picture < 30)) {
-                    post = getPost(posts);
-                    tries_to_find_picture++;
-                }
-
-                // Send pictures with the url on one line so Campfire displays it as an image
-                if (post.domain == 'i.imgur.com') {
-                    msg.send("#{post.title} - http://www.reddit.com#{post.permalink}");
-                    msg.send(post.url);
-                } else {
-                    msg.send("#{post.title} - #{post.url} - http://www.reddit.com#{post.permalink}");
-                }
+                
+                msg.send("#{post.title} - http://quotes.rest#{post.permalink}");
             });
         };
 
