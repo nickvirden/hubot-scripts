@@ -34,6 +34,10 @@ module.exports = function (robot) {
             
             msg.http(url).get()(function (err, res, body) {
             
+                console.log(err);
+                console.log(res);
+                console.log(body);
+                
                 if (body.match(/^302/)[0] == '302' || body.match(/^302/)[0] === null) {
                     msg.send("That author probably doesn't exist.");
                     return;
@@ -53,7 +57,7 @@ module.exports = function (robot) {
                 var post = getPost(posts),
                     tries_to_find_picture = 0;
                 
-                msg.send("#{post.title} - http://quotes.rest#{post.permalink}");
+                msg.send("#{post.title} - http://quotesondesign.com/wp-json/posts#{post.permalink}");
             });
         };
 
