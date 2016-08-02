@@ -39,11 +39,6 @@ module.exports = function (robot) {
                 console.log(err);
                 console.log(res);
                 console.log(body);
-                
-                if (body.match(/^302/)[0] == '302' || body.match(/^302/) === null) {
-                    msg.send("That author probably doesn't exist.");
-                    return;
-                }
 
                 var posts = JSON.parse(body),
                     post = getPost(posts);
