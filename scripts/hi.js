@@ -36,7 +36,7 @@ module.exports = function (robot) {
                 
                 console.log(quote);
                 
-                msg.send(quote.content + "-" + quote.title + "-" + quote.link);
+                msg.send(quote.body.content + "-" + quote.body.title + "-" + quote.body.link);
             });
         };
         
