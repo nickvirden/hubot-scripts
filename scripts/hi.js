@@ -36,9 +36,9 @@ module.exports = function (robot) {
                 
                 console.log(quote);
                 
-                console.log(quote.shift());
+                var parsedQuote = quote.shift();
                 
-                msg.send(quote.content + "-" + quote.title + "-" + quote.link);
+                msg.send(parsedQuote.content + "-" + parsedQuote.title + "-" + parsedQuote.link);
             });
         };
         
