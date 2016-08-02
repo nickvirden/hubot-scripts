@@ -5,8 +5,6 @@
 
 module.exports = function (robot) {
     
-    'use strict';
-    
     robot.hear(/hi/i, function (msg) {
         
         msg.send("Hola!");
@@ -25,10 +23,11 @@ module.exports = function (robot) {
     // If you ask C3P0 to give you a random quote
     robot.respond(/.*give.*me.*a.*quote.*/i, function (msg) {
         
-        console.log(msg);
-        console.log(typeof(retrieveQuote));
-        
-        retrieveQuote(msg);
+        var getPost = function (posts) {
+            
+            var random = Math.round(Math.random() * posts.data.children.length);
+            posts.data.children[random].data;
+        };
         
         var retrieveQuote = function (msg) {
             
@@ -61,11 +60,7 @@ module.exports = function (robot) {
                 msg.send("#{post.title} - http://quotesondesign.com/wp-json/posts#{post.permalink}");
             });
         };
-
-        var getPost = function (posts) {
-            
-            var random = Math.round(Math.random() * posts.data.children.length);
-            posts.data.children[random].data;
-        };
+        
+        retrieveQuote(msg);
     });
 };
