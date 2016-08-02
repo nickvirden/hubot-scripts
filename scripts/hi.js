@@ -23,8 +23,6 @@ module.exports = function (robot) {
     // If you ask C3P0 to give you a random quote
     robot.respond(/.*give.*me.*a.*quote.*/i, function (msg) {
         
-        retrieveQuote(msg);
-        
         var retrieveQuote = function (msg) {
             
             // Hard code the URL
@@ -39,5 +37,7 @@ module.exports = function (robot) {
                 msg.send("#{quote.content} - #{quote.title} - #{quote.link}");
             });
         };
+        
+        retrieveQuote(msg);
     });
 };
