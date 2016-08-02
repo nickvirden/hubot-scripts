@@ -63,5 +63,4 @@ module.exports = function (robot) {
             posts.data.children[random].data;
         };
     });
-    */
 };
