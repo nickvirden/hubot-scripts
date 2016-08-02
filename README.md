@@ -5,8 +5,11 @@
 C3P0 responds to the following commands:
 
 1) He responds to 'Hi' or 'hi';
+
 2) If you say 'C3P0 bye', he will respond;
+
 3) If you use the words 'teach', 'me', 'how', and 'cook' in the same phrase, he will return a random GIF recipe from Reddit to you;
+
 4) If you use the words 'give', 'me', and 'quote' in the same phrase, he will return a random quote to you.
 
 # DEFAULT CONTENT
