@@ -34,7 +34,9 @@ module.exports = function (robot) {
 
                 var quote = JSON.parse(body);
                 
-                msg.send(quote.content, "-", quote.title, "-", quote.link);
+                console.log(quote);
+                
+                msg.send(quote.content + "-" + quote.title + "-" + quote.link);
             });
         };
         
