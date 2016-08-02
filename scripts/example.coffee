@@ -50,7 +50,7 @@ module.exports = (robot) ->
             # Send pictures with the url on one line so Campfire displays it as an image
             if post.domain == 'i.imgur.com'
               msg.send "#{post.title} - http://www.reddit.com#{post.permalink}"
-              msg.send post.url
+              # msg.send post.url
             else
               msg.send "#{post.title} - #{post.url} - http://www.reddit.com#{post.permalink}"
 
