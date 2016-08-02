@@ -36,7 +36,7 @@ module.exports = function (robot) {
                 
                 console.log(quote);
                 
-                quote.shift();
+                console.log(quote.shift());
                 
                 msg.send(quote.content + "-" + quote.title + "-" + quote.link);
             });
